@@ -1,6 +1,7 @@
 package com.xieziming.stap;
 
 import com.xieziming.stap.robot.CommentCreator;
+import com.xieziming.stap.robot.ExecutionCreator;
 import com.xieziming.stap.robot.RobotContext;
 import com.xieziming.stap.robot.TestCaseCreator;
 import org.springframework.context.ApplicationContext;
@@ -15,15 +16,19 @@ public class Robot {
         ApplicationContext ac= new AnnotationConfigApplicationContext(RobotContext.class);
         TestCaseCreator testCaseCreator = ac.getBean(TestCaseCreator.class);
         CommentCreator commentCreator = ac.getBean(CommentCreator.class);
-
+        ExecutionCreator executionCreator = ac.getBean(ExecutionCreator.class);
         //testCaseCreator.deleteAll();
 
-        for(int i=0; i<10; i++){
-            testCaseCreator.create();
-        }
+//        for(int i=0; i<10; i++){
+//            testCaseCreator.create();
+//        }
 
         for(int i=0; i<200; i++){
             commentCreator.create();
         }
+
+//        for(int i=0; i<20; i++){
+//            executionCreator.create();
+//        }
     }
 }
